@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  color: MyText
+  weight: 1
+  batterytype: MyText
+  kwh: 1
+  maxspeed: 1
+  brand: MyText
+  chargingtime: 1
+  owner_id: 
+
+two:
+  name: MyText
+  color: MyText
+  weight: 1
+  batterytype: MyText
+  kwh: 1
+  maxspeed: 1
+  brand: MyText
+  chargingtime: 1
+  owner_id: 

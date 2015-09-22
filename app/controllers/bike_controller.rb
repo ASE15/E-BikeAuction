@@ -1,0 +1,2 @@
+class BikeController < ApplicationController
+end
