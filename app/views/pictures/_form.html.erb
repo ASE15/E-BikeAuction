@@ -1,0 +1,13 @@
+<%= form_for(@bike, :html => { :multipart => true }) do |f| %>
+
+    <%= f.fields_for :pictures do |p| %>
+        <div class="field">
+          <%= p.label :picture %><br>
+          <%= p.file_field :picture, :multiple => true, name: "pictures[picture][]" %>
+        </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
