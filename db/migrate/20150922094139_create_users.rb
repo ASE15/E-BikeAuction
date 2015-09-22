@@ -6,7 +6,4 @@ class CreateUsers < ActiveRecord::Migration
       t.timestamps
     end
   end
-  def change
-    add_index :username, unique: true
-  end
 end
