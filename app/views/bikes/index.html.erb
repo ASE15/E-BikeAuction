@@ -1,0 +1,23 @@
+<h1>Listing Bikes</h1>
+
+<%= link_to 'New bike', new_bike_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+  </tr>
+
+  <% @bikes.each do |bike| %>
+      <tr>
+        <td><%= bike.name %></td>
+        <td><%= bike.brand %></td>
+        <td><%= link_to 'Show', bike_path(bike) %></td>
+        <td><%= link_to 'Edit', edit_bike_path(bike) %></td>
+        <td><%= link_to 'Destroy', bike_path(bike),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+

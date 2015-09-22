@@ -1,0 +1,18 @@
+<p>
+  <strong>Name:</strong>
+  <%= @bike.name %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @bike.brand %>
+</p>
+
+<h2>Pictures</h2>
+
+<%= render @bike.pictures %>
+
+
+
+<%= link_to 'Edit', edit_bike_path(@bike) %> |
+<%= link_to 'Back', bikes_path %>

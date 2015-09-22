@@ -1,0 +1,61 @@
+<%= form_for @bike do |f| %>
+
+    <% if @bike.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@bike.errors.count, "error") %> prohibited
+            this bike from being saved:
+          </h2>
+          <ul>
+            <% @bike.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :brand %><br>
+      <%= f.text_field :brand %>
+    </p>
+
+    <p>
+      <%= f.label :color %><br>
+      <%= f.text_field :color %>
+    </p>
+
+    <p>
+      <%= f.label :weight %><br>
+      <%= f.text_field :weight %>
+    </p>
+
+    <p>
+      <%= f.label :batterytype %><br>
+      <%= f.text_field :batterytype %>
+    </p>
+
+    <p>
+      <%= f.label :kwh %><br>
+      <%= f.text_field :kwh %>
+    </p>
+
+    <p>
+      <%= f.label :maxspeed %><br>
+      <%= f.text_field :maxspeed %>
+    </p>
+
+    <p>
+      <%= f.label :chargingtime %><br>
+      <%= f.text_field :chargingtime %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>

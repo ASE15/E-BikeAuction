@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :auction do
       resources :bid
     end
+    resources :pictures
   end
 
 
