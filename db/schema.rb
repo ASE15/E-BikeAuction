@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(version: 20150922133816) do
     t.integer  "maxspeed"
     t.text     "brand"
     t.integer  "chargingtime"
-    t.integer  "owner_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "bikes", ["owner_id"], name: "index_bikes_on_owner_id"
+  add_index "bikes", ["user_id"], name: "index_bikes_on_user_id"
 
   create_table "users", force: true do |t|
     t.text     "username"
@@ -64,6 +64,5 @@ ActiveRecord::Schema.define(version: 20150922133816) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], unique: true
 
 end
