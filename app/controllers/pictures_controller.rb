@@ -5,7 +5,7 @@ class PicturesController < ApplicationController
 
     if params[:picture]
       @picture = @bike.pictures.create(picture_params)
-      @picture.save
+      @bike.save
       redirect_to bike_path(@bike)
     else
       redirect_to bike_path(@bike), :alert => 'Picture cannot be blank!'

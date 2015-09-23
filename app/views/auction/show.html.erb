@@ -1,0 +1,12 @@
+<h1>AUCTION</h1>
+<p>
+  <strong>Enddate:</strong>
+  <%= @auction.id %> (enddate is not working??)
+</p>
+
+<h2>bike infos</h2>
+<%= render @bike %>
+
+
+<%= link_to 'Edit', edit_bike_auction_path(@bike, @auction) %> |
+<%= link_to 'Back', bikes_path %>
