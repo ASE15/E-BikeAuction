@@ -9,7 +9,7 @@ class CreateBikes < ActiveRecord::Migration
       t.integer :maxspeed
       t.text :brand
       t.integer :chargingtime
-      t.references :owner, index: true
+      t.references :user, index: true
 
       t.timestamps
     end

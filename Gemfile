@@ -47,3 +47,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'carrierwave'
 
 gem 'rmagick'
+gem 'devise'
