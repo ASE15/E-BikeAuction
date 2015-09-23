@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922094740) do
+ActiveRecord::Schema.define(version: 20150922125552) do
 
   create_table "auctions", force: true do |t|
     t.datetime "endtime"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20150922094740) do
   end
 
   add_index "bikes", ["owner_id"], name: "index_bikes_on_owner_id"
+
+  create_table "pictures", force: true do |t|
+    t.string   "picture"
+    t.integer  "bike_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pictures", ["bike_id"], name: "index_pictures_on_bike_id"
 
   create_table "users", force: true do |t|
     t.text     "username"

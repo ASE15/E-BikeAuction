@@ -1,0 +1,28 @@
+<%= form_for(@bike, :html => { :multipart => true }) do |f| %>
+
+    <ul class="thumbnails">
+      <%= f.fields_for :pictures, @bike.pictures do |pictures_field| %>
+          <% if pictures_field.object.new_record? %>
+              <li id="<%= pictures_field.object_name.gsub(/[^0-9]+/,'') %>" class="span4">
+                <%= pictures_field.label :file, "Image:" %>
+                <%= pictures_field.file_field :file %>
+              </li>
+          <% else %>
+              <li id="<%= pictures_field.object_name.gsub(/[^0-9]+/,'') %>" class="span2">
+                <div class="thumbnail">
+                  <%= image_tag(pictures_field.object.picture.url) %>
+                  <div class="caption">
+                    <%= pictures_field.check_box :_destroy %>
+                    <%= pictures_field.label(:_destroy, "Delete image", :class => "checkbox inline") %>
+                  </div>
+                </div>
+              </li>
+          <% end %>
+      <% end %>
+    </ul>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
