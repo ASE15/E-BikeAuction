@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
@@ -88,7 +88,6 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
-    rmagick (2.15.4)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
     sass (3.2.19)
@@ -131,6 +130,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
@@ -138,13 +138,9 @@ DEPENDENCIES
   jquery-rails
   pg
   rails (= 4.1.8)
-  rmagick
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   sqlite3
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
-
-BUNDLED WITH
-   1.10.6

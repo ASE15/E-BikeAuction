@@ -1,1 +1,4 @@
 # E-BikeAuction
+
+##Dependencys
+- ImageMagick
