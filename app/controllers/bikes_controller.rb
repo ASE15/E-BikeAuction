@@ -1,6 +1,14 @@
 class BikesController < ApplicationController
   def index
-    @bikes = Bike.all
+
+    if params[:search] and not params[:search].empty?
+
+      @bikes = Bike.search_each(params[:search])
+
+    else
+      #@bikes = Bike.order("created_at DESC")
+      @bikes = Bike.all
+    end
   end
 
   def show
