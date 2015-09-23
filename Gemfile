@@ -46,5 +46,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 # Picture uploader
 gem 'carrierwave'
 
-#gem 'rmagick'
+gem 'rmagick', :require => 'RMagick'
 gem 'devise'
