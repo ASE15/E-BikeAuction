@@ -22,6 +22,13 @@
       <tr>
         <td><%= bike.name %></td>
         <td><%= bike.brand %></td>
+        <td>
+          <% if bike.auction.nil? %>
+            <%= link_to 'Start auction', new_bike_auction_path(bike) %>
+          <% else %>
+            <%= link_to 'Show auction', bike_auction_path(bike, bike.auction) %>
+          <% end %>
+        </td>
         <td><%= link_to 'Show', bike_path(bike) %></td>
         <td><%= link_to 'Edit', edit_bike_path(bike) %></td>
         <td><%= link_to 'Destroy', bike_path(bike),
@@ -30,4 +37,3 @@
       </tr>
   <% end %>
 </table>
-
