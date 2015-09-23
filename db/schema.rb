@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20150922133816) do
-
+ActiveRecord::Schema.define(version: 20150922133817) do
 
   create_table "auctions", force: true do |t|
     t.datetime "endtime"
