@@ -22,6 +22,10 @@ class BidController < ApplicationController
       redirect_to auction_path(@auction)
   end
 
+  def show
+    @bid = Bid.find(params[:id])
+  end
+
   private
 
   def bid_params
