@@ -1,4 +1,13 @@
 <h1>Auctions</h1>
+
+<%= form_tag(auctions_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Auctions" %>
+    <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+         of using a Rails form helper -->
+    <button type="submit">Search</button> <%= link_to 'Clear search', auctions_path %>
+    </div>
+<% end %>
+
 <table>
   <tr>
     <th>Name</th>
