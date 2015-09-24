@@ -41,7 +41,9 @@ class BidController < ApplicationController
   end
 
   def is_bid_within_time
-    @auction.endtime > DateTime.current
+    now = DateTime.now
+    now = now.change(:offset => "+0000")
+    @auction.endtime > now
   end
 
 end

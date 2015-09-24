@@ -18,9 +18,11 @@ class AuctionController < ApplicationController
   def create
     @bike = Bike.find(params[:bike_id])
     @auction = @bike.create_auction(auction_params)
-    @bike.save
-
-    redirect_to bike_auction_path(@bike, @auction)
+    if @auction.save
+      redirect_to bike_auction_path(@bike, @auction)
+    else
+      render 'new'
+    end
   end
 
   def edit
@@ -48,7 +50,7 @@ class AuctionController < ApplicationController
 
   private
   def auction_params
-    params.require(:auction).permit(:enddate)
+    params.require(:auction).permit(:endtime, :current_amount)
   end
 
 end

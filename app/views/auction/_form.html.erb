@@ -1,8 +1,14 @@
 <%= form_for([@bike, @bike.build_auction], :url => bike_auction_index_path(@bike)) do |f| %>
 
-    <%= f.label :endtime %><br>
-    <%= f.datetime_select :endtime, :ampm => false %>
+    <p>
+      <%= f.label :current_amount %><br>
+      <%= f.text_field :current_amount %>
+    </p>
 
+    <p>
+      <%= f.label :endtime %><br>
+      <%= f.datetime_select :endtime, :ampm => false %>
+    </p>
 
     <div class="actions">
       <%= f.submit %>

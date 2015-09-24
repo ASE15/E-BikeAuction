@@ -1,6 +1,14 @@
 <h1>AUCTION</h1>
 
 <h2>Amount: <%= @auction.current_amount %></h2>
+<%= @auction.endtime %>
+<%
+   now = DateTime.now
+   now = now.change(:offset => "+0000")
+%>
+<%= now %>
+
+<%= (@auction.endtime - now) %>
 
 <%= link_to 'New Bid', new_bike_auction_bid_path(@auction.bike, @auction) %>
 <p>
@@ -14,8 +22,8 @@
 <h2>bids</h2>
 
 <% @auction.bids.each do |bid| %>
-    <p>- <%= bid.amount %> (<%= bid.user.email %>)</p>
+    <p>- <%= bid.amount %> (<%= bid.user.email %>, <%= bid.created_at %>)</p>
 <% end %>
 
 <%= link_to 'Edit', edit_bike_auction_path(@auction.bike, @auction) %> |
-<%= link_to 'Back', auction_path %>
+<%= link_to 'Back', auctions_path %>
