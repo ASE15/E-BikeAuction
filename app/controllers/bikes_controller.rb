@@ -1,4 +1,8 @@
 class BikesController < ApplicationController
+
+  before_action :authenticate_user!
+  before_filter :owns_bike!, :only => [:update, :edit, :destroy]
+
   def index
 
     if params[:search] and not params[:search].empty?
@@ -10,6 +14,13 @@ class BikesController < ApplicationController
       @bikes = Bike.all
     end
   end
+
+
+  def mybikes
+    @bikes = current_user.bikes
+    render 'index'
+  end
+
 
   def show
     @bike = Bike.find(params[:id])
@@ -25,6 +36,7 @@ class BikesController < ApplicationController
 
   def create
     @bike = Bike.new(bike_params)
+    @bike.user = current_user
 
     if @bike.save
       redirect_to @bike
