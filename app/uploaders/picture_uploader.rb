@@ -10,10 +10,15 @@ class PictureUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
+  def cache_dir
+    "#{Rails.root}/tmp"
+  end
+
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "#{Rails.root}/app/assets/images/uploads"
+    "#{Rails.root}/public/uploads"
+    #"#{Rails.root}/app/assets/images/uploads"
     #"app/assets/images/uploads"
     # "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -49,5 +54,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  #def filename
+  #  model.id ? "#{model.id}_#{original_filename}" : original_filename
+  #end
 
 end

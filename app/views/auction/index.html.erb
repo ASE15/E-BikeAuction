@@ -1,0 +1,32 @@
+<h1>This Bike auction</h1>
+
+<%= form_tag(bike_auction_index_path(@bike), :method => "get", id: "search-form") do %>
+      <%= text_field_tag :search, params[:search], placeholder: "Search Bike auctions" %>
+      <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
+           of using a Rails form helper -->
+      <button type="submit">Search</button> <%= link_to 'Clear search', bike_auction_index_path(@bike) %>
+    </div>
+<% end %>
+
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Enddate</th>
+  </tr>
+
+  <% @bikes.each do |bike| %>
+      <tr>
+        <td><%= bike.name %></td>
+        <td><%= bike.brand %></td>
+        <td><%= bike.auction.enddate %></td>
+        <td><%= link_to 'Show', bike_auction_path(bike) %></td>
+        <td><%= link_to 'Edit', edit_bike_auction_path(bike) %></td>
+        <td><%= link_to 'Destroy', bike_auction_path(bike),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+

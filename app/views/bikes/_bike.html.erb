@@ -1,0 +1,48 @@
+<p>
+  <strong>Name:</strong>
+  <%= @bike.name %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @bike.brand %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @bike.color %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @bike.weight %>
+</p>
+
+<p>
+  <strong>Battery type:</strong>
+  <%= @bike.batterytype %>
+</p>
+
+<p>
+  <strong>kWh:</strong>
+  <%= @bike.kwh %>
+</p>
+
+<p>
+  <strong>Max speed:</strong>
+  <%= @bike.maxspeed %>
+</p>
+
+<p>
+  <strong>Charging time:</strong>
+  <%= @bike.chargingtime %>
+</p>
+
+
+
+<h2>Pictures</h2>
+
+<%= render @bike.pictures %>
+
+<h2>Add pictures:</h2>
+<%= render 'pictures/form' %>
