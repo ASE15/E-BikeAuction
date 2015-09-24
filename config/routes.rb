@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :userrake
 
+  get 'mybikes', to: 'bikes#mybikes'
+
   resources :bikes do
     resources :auction do
       resources :bid
