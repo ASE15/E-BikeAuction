@@ -1,0 +1,10 @@
+<%= form_for([@auction, @auction.bids.create], :url => bike_auction_bid_index_path(@auction.bike, @auction)) do |f| %>
+
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

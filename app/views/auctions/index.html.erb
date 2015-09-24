@@ -1,0 +1,17 @@
+<h1>Auctions</h1>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Brand</th>
+    <th>Enddate</th>
+  </tr>
+
+  <% @auctions.each do |a| %>
+      <tr>
+        <td><%= a.bike.name %></td>
+        <td><%= a.bike.brand %></td>
+        <td><%= a.endtime %></td>
+        <td><%= link_to 'Show', auction_path(a) %></td>
+      </tr>
+  <% end %>
+</table>

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :userrake
 
+  resources :auctions
+
   resources :bikes do
     resources :auction do
       resources :bid

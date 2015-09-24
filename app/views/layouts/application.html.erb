@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<p class="notice"><%= notice ? notice : flash[:notice] %></p>
+<p class="alert"><%= alert ? alert : flash[:error] %></p>
 <%= yield %>
 
 </body>
