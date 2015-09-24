@@ -11,7 +11,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # storage :fog
 
   def cache_dir
-    "#{Rails.root}/tmp/uploads"
+    "#{Rails.root}/tmp"
   end
 
   # Override the directory where uploaded files will be stored.
@@ -54,5 +54,9 @@ class PictureUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
+
+  #def filename
+  #  model.id ? "#{model.id}_#{original_filename}" : original_filename
+  #end
 
 end
