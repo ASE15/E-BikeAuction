@@ -1,5 +1,5 @@
 <p>
-  <img src="/uploads/thumb_<%= picture.picture_identifier %>" />
+  <img src="/uploads/<%= picture.picture_identifier %>" style="height:200px;" />
 
   <%= link_to 'Destroy Picture', bike_picture_path(@bike, picture),
               method: :delete,
