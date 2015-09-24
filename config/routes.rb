@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   get 'mybikes', to: 'bikes#mybikes'
 
+  resources :auctions
+
   resources :bikes do
     resources :auction do
       resources :bid

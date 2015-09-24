@@ -1,0 +1,21 @@
+<h1>AUCTION</h1>
+
+<h2>Amount: <%= @auction.current_amount %></h2>
+
+<%= link_to 'New Bid', new_bike_auction_bid_path(@auction.bike, @auction) %>
+<p>
+  <strong>Enddate:</strong>
+  <%= @auction.endtime %>
+</p>
+
+<h2>bike infos</h2>
+<%= render @bike %>
+
+<h2>bids</h2>
+
+<% @auction.bids.each do |bid| %>
+    <p>- <%= bid.amount %> (<%= bid.user.email %>)</p>
+<% end %>
+
+<%= link_to 'Edit', edit_bike_auction_path(@auction.bike, @auction) %> |
+<%= link_to 'Back', auction_path %>
