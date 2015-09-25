@@ -13,10 +13,10 @@ Rails.application.routes.draw do
 
   get 'mybikes', to: 'bikes#mybikes'
 
-  resources :auctions
+  resources :auctions, only: [:update, :edit, :destroy, :show, :index]
 
   resources :bikes do
-    resources :auction do
+    resources :auction, only: [:new, :create] do
       resources :bid
     end
     resources :pictures, only: [:create, :new, :destroy, :show]
