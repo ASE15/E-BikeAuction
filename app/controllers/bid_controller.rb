@@ -44,8 +44,17 @@ class BidController < ApplicationController
   end
 
   def is_bid_high_enough
-    @auction.current_amount.to_i < @bid.amount.to_i
+    if has_any_bids?
+      @auction.current_amount.to_i < @bid.amount.to_i
+    else
+      @auction.current_amount.to_i <= @bid.amount.to_i
+    end
   end
+
+  def has_any_bids?
+    @auction.bids.count > 0
+  end
+
 
   def is_bid_within_time
     now = DateTime.now
