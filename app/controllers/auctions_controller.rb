@@ -1,5 +1,6 @@
 class AuctionsController < ApplicationController
 
+  before_action :authenticate_user!, :only => [:update, :edit, :destroy]
   before_filter :owns_auction!, :only => [:update, :edit, :destroy]
 
   def index

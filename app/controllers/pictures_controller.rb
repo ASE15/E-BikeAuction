@@ -1,5 +1,7 @@
 class PicturesController < ApplicationController
 
+  before_action :authenticate_user!, only[:create, :destroy]
+
   def create
     @bike = Bike.find(params[:bike_id])
 

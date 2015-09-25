@@ -22,8 +22,11 @@
 <h2>Bike Infos</h2>
 <%= render @bike %>
 
+<h2>Bidding</h2>
 
-<% if @auction.is_running? %>
+<% if not user_signed_in? %>
+    You have to be signed in to bid
+<% elsif @auction.is_running? %>
     <h3>Create new bid</h3>
     <%= render 'bid/form' %>
 <% end %>
