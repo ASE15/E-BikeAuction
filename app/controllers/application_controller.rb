@@ -15,8 +15,19 @@ class ApplicationController < ActionController::Base
   end
 
   def is_own_bike?
-    @bike = Bike.find(params[:id].nil? ? params[:bike_id] : params[:id])
+    @bike = Bike.find(params[:bike_id].nil? ? params[:id] : params[:bike_id])
     @bike.user == current_user
   end
 
+  def owns_auction!
+    unless is_own_auction?
+      flash[:error] = 'You are not the owner of this auction!'
+      redirect_to auctions_path
+    end
+  end
+
+  def is_own_auction?
+    @auction = Auction.find(params[:auction_id].nil? ? params[:id] : params[:auction_id])
+    @auction.bike.user == current_user
+  end
 end
