@@ -1,5 +1,16 @@
 <%= render @bike %>
 
 
-<%= link_to 'Edit', edit_bike_path(@bike) %> |
+<% if @bike.auction.nil? %>
+    <%= link_to 'Start auction', new_bike_auction_path(@bike) %>
+<% else %>
+    <%= link_to 'Show auction', auction_path(@bike.auction) %>
+<% end %>
+<br />
 <%= link_to 'Back', bikes_path %>
+<% if is_own_bike(@bike) %>
+<%= link_to 'Edit', edit_bike_path(@bike) %> |
+<%= link_to 'Destroy', bike_path(@bike),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+<% end %>

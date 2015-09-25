@@ -16,24 +16,27 @@
   <tr>
     <th>Name</th>
     <th>Brand</th>
+    <th>Owner</th>
   </tr>
 
   <% @bikes.each do |bike| %>
       <tr>
         <td><%= bike.name %></td>
         <td><%= bike.brand %></td>
-        <td>
+        <td><%= bike.user.email %></td>
+        <td><%= link_to 'Show', bike_path(bike) %>
+          <% if is_own_bike(bike) %>
           <% if bike.auction.nil? %>
             <%= link_to 'Start auction', new_bike_auction_path(bike) %>
           <% else %>
-            <%= link_to 'Show auction', bike_auction_path(bike, bike.auction) %>
+            <%= link_to 'Show auction', auction_path(bike.auction) %>
+          <% end %>
+        <%= link_to 'Edit', edit_bike_path(bike) %>
+        <%= link_to 'Destroy', bike_path(bike),
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
           <% end %>
         </td>
-        <td><%= link_to 'Show', bike_path(bike) %></td>
-        <td><%= link_to 'Edit', edit_bike_path(bike) %></td>
-        <td><%= link_to 'Destroy', bike_path(bike),
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
 </table>

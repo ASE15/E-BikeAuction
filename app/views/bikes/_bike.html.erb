@@ -44,5 +44,9 @@
 
 <%= render @bike.pictures %>
 
-<h2>Add pictures:</h2>
-<%= render 'pictures/form' %>
+<% if is_own_bike(@bike) %>
+
+    <h2>Add pictures:</h2>
+    <%= render 'pictures/form' %>
+
+<% end %>
