@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= link_to 'Home', root_path %> <%= link_to 'Auctions', auctions_path %> <%= link_to 'My bikes', mybikes_path %> <%= link_to 'All bikes', bikes_path %>
+
+<% if user_signed_in? %>
+    <%= link_to 'Account', edit_user_registration_path %>
+<% else %>
+    <%= link_to 'Login', new_user_session_path %>
+    <%= link_to 'Register', new_user_registration_path %>
+<% end %>
 
 <p class="notice"><%= notice ? notice : flash[:notice] %></p>
 <p class="alert"><%= alert ? alert : flash[:error] %></p>
