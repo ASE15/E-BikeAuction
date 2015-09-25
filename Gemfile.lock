@@ -28,6 +28,7 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.10)
     bcrypt (3.1.10-x86-mingw32)
     builder (3.2.2)
     carrierwave (0.10.0)
@@ -66,6 +67,7 @@ GEM
     minitest (5.8.0)
     multi_json (1.11.2)
     orm_adapter (0.5.0)
+    pg (0.17.1)
     pg (0.17.1-x86-mingw32)
     rack (1.5.5)
     rack-test (0.6.3)
@@ -130,7 +132,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt
   carrierwave
   coffee-rails (~> 4.0.0)
   devise
@@ -144,3 +146,6 @@ DEPENDENCIES
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)
+
+BUNDLED WITH
+   1.10.6

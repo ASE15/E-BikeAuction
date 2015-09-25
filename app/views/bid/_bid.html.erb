@@ -1,1 +1,4 @@
-<p>- <%= bid.amount %>.- (<%= bid.user.email %>, <%= bid.created_at %>)</p>
+<p>
+  <%= (mark ? mark : '') %>
+     <%= bid.amount %>.- (<%= bid.user.email %>, <%= bid.created_at %>)
+</p>

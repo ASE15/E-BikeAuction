@@ -32,11 +32,14 @@
 <% end %>
 
 <h2>Bids</h2>
+<%  %>
 
-<% if @auction.bids.count > 0 %>
-    <% @auction.bids.each do |bid| %>
+<% if @sort_bids.count > 0 %>
+    <% @i = 0 %>
+    <% @sort_bids.each do |bid| %>
         <% if bid.id? %> <%# fix for strange empty record in array %>
-            <%= render :partial => "bid/bid", :locals => {:bid => bid} %>
+            <%= render :partial => "bid/bid", :locals => {:bid => bid, :mark => (@i == 0  ? '!' : 'x')} %>
+            <% @i = @i + 1 %>
         <% end %>
     <% end %>
 <% else %>
