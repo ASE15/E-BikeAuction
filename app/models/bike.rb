@@ -4,6 +4,9 @@ class Bike < ActiveRecord::Base
   has_many :pictures, :inverse_of => :bike, :dependent => :destroy
   accepts_nested_attributes_for :pictures, allow_destroy: true
 
+  validates :name, presence: true, length: { minimum: 3 }
+  validates :brand, presence: true, length: { minimum: 3 }
+
   def self.search(query)
     where("name LIKE ? OR brand LIKE ? OR color LIKE ? ", "%#{query}%", "%#{query}%", "%#{query}%")
   end

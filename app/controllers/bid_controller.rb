@@ -14,10 +14,10 @@ class BidController < ApplicationController
           @auction.save
           flash[:notice] = 'Bid created'
         else
-          flash[:error] = 'Bid not created'
+          flash[:error] = 'Bid not created [only numbers allowed]'
         end
       else
-        flash[:error] = 'Bid not created'
+        flash[:error] = 'Bid not created [the bid is invalid]'
       end
       redirect_to auction_path(@auction)
   end
