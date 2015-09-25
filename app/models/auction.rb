@@ -1,6 +1,6 @@
 class Auction < ActiveRecord::Base
   belongs_to :bike
-  has_many :bids
+  has_many :bids, :inverse_of => :auction, :dependent => :destroy
 
   validates :current_amount, presence: true, :numericality => { :greater_than_or_equal_to => 1 }
 
@@ -29,6 +29,11 @@ class Auction < ActiveRecord::Base
 
   end
 
+  def get_highest_bid
+    sort_bids = bids.sort_by{ |b| b.amount }.reverse
+    sort_bids[0]
+  end
+
   def manage_time_left
     #if (self.endtime - DateTime.now).to_i * 1440 < 5
     now = DateTime.now
@@ -38,5 +43,11 @@ class Auction < ActiveRecord::Base
     else
       self.endtime = self.endtime + 1.hours
     end
+  end
+
+  def is_running?
+    now = DateTime.now
+    now = now.change(:offset => "+0000")
+    self.endtime > now
   end
 end
