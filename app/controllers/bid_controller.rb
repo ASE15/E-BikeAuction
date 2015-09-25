@@ -1,7 +1,7 @@
 class BidController < ApplicationController
   def new
     @auction = Auction.find(params[:auction_id])
-    @bid = @auction.bids.create
+    @bid = @auction.bid.create
   end
 
   def create
