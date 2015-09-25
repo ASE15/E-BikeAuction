@@ -24,34 +24,55 @@
       <%= f.text_field :brand %>
     </p>
 
+    <% c = [
+            ['Blue'],
+            ['Green'],
+            ['Yellow'],
+            ['Red'],
+            ['Orange'],
+            ['White'],
+            ['Black'],
+            ['Grey'],
+            ['Violet'],
+            ['Brown']
+    ]
+    %>
     <p>
       <%= f.label :color %><br>
-      <%= f.text_field :color %>
+      <%= f.select(:color, c) %>
     </p>
 
     <p>
-      <%= f.label :weight %><br>
-      <%= f.text_field :weight %>
+      <%= f.label 'Weight (kg)' %><br>
+      <%= f.number_field(:weight, step: 0.01) %>
     </p>
 
+    <% o = [
+                    ['Lead Acid'],
+                    ['Nickel Cadmium (NiCa)'],
+                    ['Nickel Metal Hydride (NiMH)'],
+                    ['Lithium Polymer'],
+                    ['Lithium Manganese'],
+                    ['Lithium Iron Phosphate (LiFePO4)']
+            ]
+    %>
     <p>
       <%= f.label :batterytype %><br>
-      <%= f.text_field :batterytype %>
+      <%= f.select(:batterytype, o) %>
     </p>
 
     <p>
       <%= f.label :kwh %><br>
-      <%= f.text_field :kwh %>
+      <%= f.number_field(:kwh, in:1..100, step: 0.1) %>
+
+    <p>
+      <%= f.label 'Max speed (km/h)' %><br>
+      <%= f.number_field(:maxspeed, step: 0.1) %>
     </p>
 
     <p>
-      <%= f.label :maxspeed %><br>
-      <%= f.text_field :maxspeed %>
-    </p>
-
-    <p>
-      <%= f.label :chargingtime %><br>
-      <%= f.text_field :chargingtime %>
+      <%= f.label 'Charging time (hours)' %><br>
+      <%= f.number_field(:chargingtime, step: 1) %>
     </p>
 
     <p>

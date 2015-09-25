@@ -14,6 +14,7 @@
 
 <table>
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Brand</th>
     <th>Owner</th>
@@ -21,6 +22,10 @@
 
   <% @bikes.each do |bike| %>
       <tr>
+        <td><% if bike.pictures.count > 0 %>
+              <%= render :partial => "pictures/picture_index", :locals => {:picture => bike.pictures[0]} %>
+          <% end %>
+        </td>
         <td><%= bike.name %></td>
         <td><%= bike.brand %></td>
         <td><%= bike.user.email %></td>
