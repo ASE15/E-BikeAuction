@@ -1,7 +1,7 @@
 <%= form_for([@bike, @bike.build_auction], :url => bike_auction_index_path(@bike)) do |f| %>
 
     <p>
-      <%= f.label :current_amount %><br>
+      <%= f.label 'Start price' %><br>
       <%= f.text_field :current_amount %>
     </p>
 

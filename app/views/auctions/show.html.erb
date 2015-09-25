@@ -1,4 +1,11 @@
-<h1>AUCTION</h1>
+<h1>AUCTION: <%= @bike.brand %> <%= @bike.name %></h1>
+
+<% if not @auction.is_running? %>
+    <h2>Auction is finished!</h2>
+    <% if @auction.bids.count > 0 %>
+        Winner: <%= @auction.get_highest_bid.user.email %>
+    <% end %>
+<% end %>
 
 <h2>Current price: <%= @auction.current_amount %></h2>
 
@@ -7,18 +14,37 @@
   <%= @auction.endtime %>
 </p>
 
+<p>
+  <strong>Seller:</strong>
+  <%= @auction.bike.user.email %>
+</p>
+
 <h2>Bike Infos</h2>
 <%= render @bike %>
 
-<h2>Bids</h2>
 
-<%= render 'bid/form' %>
-
-
-
-<% @auction.bids.each do |bid| %>
-    <%= render :partial => "bid/bid", :locals => {:bid => bid} %>
+<% if @auction.is_running? %>
+    <h3>Create new bid</h3>
+    <%= render 'bid/form' %>
 <% end %>
 
-<%= link_to 'Edit', edit_bike_auction_path(@auction.bike, @auction) %> |
+<h2>Bids</h2>
+
+<% if @auction.bids.count > 0 %>
+    <% @auction.bids.each do |bid| %>
+        <% if bid.id? %> <%# fix for strange empty record in array %>
+            <%= render :partial => "bid/bid", :locals => {:bid => bid} %>
+        <% end %>
+    <% end %>
+<% else %>
+    No bids existing
+<% end %>
+
+<br /><br />
 <%= link_to 'Back', auctions_path %>
+<% if is_own_auction(@auction) %>
+<%= link_to 'Edit', edit_auction_path(@auction) %> |
+<%= link_to 'Destroy', auction_path(@auction),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+<% end %>

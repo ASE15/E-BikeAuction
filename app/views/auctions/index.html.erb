@@ -8,8 +8,9 @@
     </div>
 <% end %>
 
-<table>
+<table border="1">
   <tr>
+    <th></th>
     <th>Name</th>
     <th>Brand</th>
     <th>Enddate</th>
@@ -17,6 +18,10 @@
 
   <% @auctions.each do |a| %>
       <tr>
+        <td><% if a.bike.pictures.count > 0 %>
+              <%= render :partial => "pictures/picture_index", :locals => {:picture => a.bike.pictures[0]} %>
+            <% end %>
+        </td>
         <td><%= a.bike.name %></td>
         <td><%= a.bike.brand %></td>
         <td><%= a.endtime %></td>

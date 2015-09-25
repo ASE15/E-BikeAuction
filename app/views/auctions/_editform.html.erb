@@ -1,4 +1,4 @@
-<%= form_for([@bike, @bike.auction], :url => bike_auction_index_path(@bike)) do |f| %>
+<%= form_for([@auction], :url => auction_path(@auction)) do |f| %>
 
     <%= f.label :endtime %><br>
     <%= f.datetime_select :endtime, :ampm => false %>
