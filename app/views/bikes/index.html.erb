@@ -1,12 +1,12 @@
-<h1>All Bikes<small class="small-title">Overview</small></h1>
-<%= link_to 'New bike', new_bike_path %>
+<h1>Bikes<small class="small-title">Overview</small></h1>
 
+<%= button_to 'Create New Bike', new_bike_path, class: "btn btn-success pull-right" , :method => :get%>
 
 <%= form_tag(bikes_path, :method => "get", id: "search-form") do %>
       <%= text_field_tag :search, params[:search], placeholder: "Search Bikes" %>
       <!-- In order to have the "search" icon int the button, we need to use plain HTML instead
            of using a Rails form helper -->
-      <button type="submit">Search</button> <%= link_to 'Clear search', bikes_path %>
+      <button type="submit" class="btn btn-info">Search</button> <%= link_to 'Clear search', bikes_path %>
 <% end %>
 
 
