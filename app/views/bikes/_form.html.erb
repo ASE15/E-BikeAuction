@@ -1,11 +1,8 @@
 <%= form_for @bike do |f| %>
-
     <% if @bike.errors.any? %>
-        <div id="error_explanation">
-          <h2>
-            <%= pluralize(@bike.errors.count, "error") %> prohibited
-            this bike from being saved:
-          </h2>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <h3><%= pluralize(@bike.errors.count, "error") %> prohibited this bike from being saved:</h3>
           <ul>
             <% @bike.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
