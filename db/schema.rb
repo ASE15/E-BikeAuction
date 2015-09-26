@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924115031) do
+ActiveRecord::Schema.define(version: 20150925162604) do
 
   create_table "auctions", force: true do |t|
     t.datetime "endtime"
@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 20150924115031) do
     t.integer  "maxspeed"
     t.text     "brand"
     t.integer  "chargingtime"
-    t.integer  "user_id"
+    t.integer  "owner_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "bikes", ["user_id"], name: "index_bikes_on_user_id"
+  add_index "bikes", ["owner_id"], name: "index_bikes_on_owner_id"
 
   create_table "pictures", force: true do |t|
     t.string   "picture"
@@ -56,8 +56,19 @@ ActiveRecord::Schema.define(version: 20150924115031) do
 
   add_index "pictures", ["bike_id"], name: "index_pictures_on_bike_id"
 
+  create_table "twitter_users", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.string   "oauth_secret"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.text     "username"
+    t.text     "password"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                  default: "", null: false
