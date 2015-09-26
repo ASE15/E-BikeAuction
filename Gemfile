@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 
@@ -51,3 +50,7 @@ gem 'devise'
 # Twitter support
 gem 'twitter', '~>5.3.1'
 gem 'omniauth-twitter', '~>1.0.1'
+# To hide credentials for twitter. Please do figaro install and then
+# set TWITTER_KEY and TWITTER_SECRET
+# in config/application.yml to make the app work on heroku
+gem 'figaro'
