@@ -19,15 +19,6 @@
 <p class="notice"><%= notice ? notice : flash[:notice] %></p>
 <p class="alert"><%= alert ? alert : flash[:error] %></p>
 
-<div>
-  <% if current_twitter_user %>
-	Signed in as <strong><%= current_twitter_user.name %></strong>!
-	<%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-	<%= link_to "Sign in with Twitter", "/auth/twitter", id: "sign_in" %>
-  <% end %>
-</div>
-
 <%= yield %>
 
 </body>

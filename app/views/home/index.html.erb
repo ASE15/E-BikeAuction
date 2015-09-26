@@ -5,9 +5,9 @@
   <%= render 'devise/menu/login_items' %>
 </ul>
 
-<% if !current_twitter_user.nil? %>
-    <p>Click The link below to send a tweet.</p>
-    <%= link_to "Send a Tweet", new_tweet_path %>
-<% else %>
-    <p>You must log in to send a tweet.</p>
-<% end %>
+ <p>Click The link below to tweet this auction.</p>
+ 
+  <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
+    <%= hidden_field_tag :message, "A hidden message to be tweeted!" %>
+    <%= f.submit "Send Tweet" %>
+  <% end %>
