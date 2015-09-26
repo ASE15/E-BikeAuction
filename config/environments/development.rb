@@ -1,4 +1,8 @@
 Rails.application.configure do
+  #Twitter configuration
+  config.twitter_key = "qS6r1Ljtw4MgPZkLD4K2Am6Ja"
+  config.twitter_secret = "SZHtTPGyMraCu6ogSskgkhKcdRNPG5VcNdbwwaiU48IvuWeRpg"
+  
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

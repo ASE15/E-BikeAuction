@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+
+  # Twitter starts here
+  
+  # Used to implement the login functionality with ominauth
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  
+  # Signing out from twitter
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+  
+  # Ressources to store sessions and tweets
+  resources :tweets, only: [:new, :create]
+  resources :sessions, only: [:create, :destroy]
+
+  # Twitter ends here
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

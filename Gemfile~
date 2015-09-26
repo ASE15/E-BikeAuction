@@ -47,7 +47,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'carrierwave'
 
 gem 'devise'
-
-# Twitter support
-gem 'twitter', '~>5.3.1'
-gem 'omniauth-twitter', '~>1.0.1'
