@@ -22,7 +22,7 @@
             <li><a href="<%=edit_user_registration_path%>"><span class="glyphicon glyphicon-user"></span> <%=current_user.email%></a></li>
             <li><a href="<%=destroy_user_session_path%>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         <% else %>
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="<%=new_user_registration_path%>"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="<%=new_user_session_path%>"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         <% end %>
       </ul>

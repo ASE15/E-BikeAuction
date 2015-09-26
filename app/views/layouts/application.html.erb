@@ -13,15 +13,18 @@
 </head>
 <body>
 <%= render 'layouts/navigation' %>
-<% if user_signed_in? %>
-    <%= link_to 'Account', edit_user_registration_path %>
-<% else %>
-    <%= link_to 'Login', new_user_session_path %>
-    <%= link_to 'Register', new_user_registration_path %>
+<div class="container mainpage-content">
+<% if alert %>
+    <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= alert ? alert : flash[:error] %>
+    </div>
 <% end %>
-
-<p class="notice"><%= notice ? notice : flash[:notice] %></p>
-<p class="alert"><%= alert ? alert : flash[:error] %></p>
+<% if notice %>
+    <div class="alert alert-danger">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><%= notice ? notice : flash[:notice] %>
+    </div>
+<% end %>
 <%= yield %>
+</div>
 </body>
 </html>
