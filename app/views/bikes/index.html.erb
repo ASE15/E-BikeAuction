@@ -1,4 +1,4 @@
-<h1>Bikes<small class="small-title">Overview</small></h1>
+<h1>Bikes&nbsp;<span class="badge"><%= @bikes.length%></span><small class="small-title">Overview</small></h1>
 
 <%= button_to 'Create New Bike', new_bike_path, class: "btn btn-success pull-right" , :method => :get%>
 
@@ -29,7 +29,7 @@
         <td><%= bike.brand %></td>
         <td><%= bike.user.email %></td>
         <td>
-          <%= button_to 'Show', bike_path(bike), class: "btn-xs btn-info" , :method => :get%>
+          <%= button_to 'Show Bike', bike_path(bike), class: "btn-xs btn-info" , :method => :get%>
           <% if is_own_bike(bike) %>
               <% if bike.auction.nil? %>
                   <%= button_to 'Start Auction', new_bike_auction_path(bike), class: "btn-xs btn-success" , :method => :get%>

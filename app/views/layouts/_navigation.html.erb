@@ -6,15 +6,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%=root_path%>"><%= image_tag("bike_icon.png", size: "55x25") %></a>
+      <a class="navbar-brand" href="<%=auctions_path%>"><%= image_tag("bike_icon.png", size: "55x25") %></a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(auctions_path) %>"><a href="<%=auctions_path%>">Buy</a></li>
         <li class="<%= 'active' if current_page?(new_bike_path) %>"><a href="<%=new_bike_path%>">Sell</a></li>
-        <li class="<%= 'active' if current_page?(bikes_path) %>"><a href="<%=bikes_path%>">All bikes</a></li>
+        <li class="<%= 'active' if current_page?(bikes_path) %>"><a href="<%=bikes_path%>">All Bikes</a></li>
         <% if user_signed_in? %>
-            <li class="<%= 'active' if current_page?(mybikes_path) %>"><a href="<%=mybikes_path%>">My bikes</a></li>
+            <li class="<%= 'active' if current_page?(mybikes_path) %>"><a href="<%=mybikes_path%>">My Bikes</a></li>
         <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
