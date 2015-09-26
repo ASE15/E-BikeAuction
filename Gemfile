@@ -45,5 +45,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 # Picture uploader
 gem 'carrierwave'
-
 gem 'devise'
+
+# Twitter
+gem 'twitter', '~> 5.3.1'
+gem 'omniauth-twitter', '~> 1.0.1'
+gem 'figaro'
