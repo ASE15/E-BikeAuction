@@ -1,16 +1,14 @@
-<%= render @bike %>
-
-
+<h1>Overview</h1>
+<% if is_own_bike(@bike) %>
+    <%= button_to('Destroy', bike_path(@bike),
+                  method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right'  ) %><span style="float:right;">&nbsp;&nbsp;</span>
+    <%= button_to 'Edit', edit_bike_path(@bike), class: "btn btn-info pull-right" , :method => :get%><span style="float:right;">&nbsp;&nbsp;</span>
+<%end%>
 <% if @bike.auction.nil? %>
-    <%= link_to 'Start auction', new_bike_auction_path(@bike) %>
+    <%= button_to 'Start auction', new_bike_auction_path(@bike), class: "btn btn-success pull-right" , :method => :get%>
 <% else %>
-    <%= link_to 'Show auction', auction_path(@bike.auction) %>
+    <%= button_to 'Show auction', auction_path(@bike.auction), class: "btn btn-success pull-right" , :method => :get%>
 <% end %>
+<%= render @bike %>
 <br />
 <%= link_to 'Back', bikes_path %>
-<% if is_own_bike(@bike) %>
-<%= link_to 'Edit', edit_bike_path(@bike) %> |
-<%= link_to 'Destroy', bike_path(@bike),
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %>
-<% end %>
