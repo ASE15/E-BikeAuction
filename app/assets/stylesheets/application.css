@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+.mainpage-content {
+    margin-top: 20px;
+    margin-left: 70px !important;
+}
