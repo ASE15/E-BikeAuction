@@ -8,7 +8,7 @@
 <% end %>
 <br>
 <table class="table table-striped table-hover table-condensed table-responsive">
-  <tr class="info">
+  <tr>
     <th></th>
     <th>Name</th>
     <th>Brand</th>
@@ -25,7 +25,7 @@
         <td><%= a.bike.name %></td>
         <td><%= a.bike.brand %></td>
         <td><%= a.endtime %></td>
-        <td><%= link_to 'Show', auction_path(a) %></td>
+        <td><%= button_to 'Show', auction_path(a), class: "btn-xs btn-info" , :method => :get%></td>
       </tr>
   <% end %>
 </table>

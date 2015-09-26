@@ -32,9 +32,9 @@
           <%= button_to 'Show', bike_path(bike), class: "btn-xs btn-info" , :method => :get%>
           <% if is_own_bike(bike) %>
               <% if bike.auction.nil? %>
-                      <%= button_to 'Start Auction', new_bike_auction_path(bike), class: "btn-xs btn-success" , :method => :get%>
+                  <%= button_to 'Start Auction', new_bike_auction_path(bike), class: "btn-xs btn-success" , :method => :get%>
               <% else %>
-                <%= link_to 'Show auction', auction_path(bike.auction) %>
+                  <%= button_to 'Show Auction', auction_path(bike.auction), class: "btn-xs btn-info" , :method => :get%>
               <% end %>
               <%= button_to 'Edit', edit_bike_path(bike), class: "btn-xs btn-info" , :method => :get%>
               <%= button_to('Destroy', bike_path(bike),
