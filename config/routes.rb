@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
   #Twitter stuff starts here
-  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/:provider/callback', to: 'twitter_sessions#create'
   get 'auth/failure', to: redirect('/')
   
   get 'signout', to: 'twitter_sessions#destroy', as: 'signout'
   resources :tweets, only: [:new, :create]
-  resources :sessions, only: [:create, :destroy]
+  resources :twitter_sessions, only: [:create, :destroy]
   #Twitter stuff ends here
 
   devise_for :users

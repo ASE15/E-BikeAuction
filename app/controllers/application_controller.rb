@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+  helper_method :current_twitter_user
+ 
+  def current_twitter_user
+    @current_twitter_user ||= TwitterUser.find(session[:twitter_user_id]) if session[:twitter_user_id]
+  end
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
