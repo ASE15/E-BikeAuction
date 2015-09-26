@@ -13,7 +13,6 @@
 </head>
 <body>
 <%= render 'layouts/navigation' %>
-
 <% if user_signed_in? %>
     <%= link_to 'Account', edit_user_registration_path %>
 <% else %>
@@ -24,6 +23,5 @@
 <p class="notice"><%= notice ? notice : flash[:notice] %></p>
 <p class="alert"><%= alert ? alert : flash[:error] %></p>
 <%= yield %>
-
 </body>
 </html>

@@ -12,6 +12,9 @@
       <ul class="nav navbar-nav">
         <li class="<%= 'active' if current_page?(auctions_path) %>"><a href="<%=auctions_path%>">Buy</a></li>
         <li><a href="#">Sell</a></li>
+        <li class="<%= 'active' if current_page?(auctions_path) %>"><a href="<%=auctions_path%>">Auctions</a></li>
+        <li class="<%= 'active' if current_page?(mybikes_path) %>"><a href="<%=mybikes_path%>">My bikes</a></li>
+        <li class="<%= 'active' if current_page?(bikes_path) %>"><a href="<%=bikes_path%>">All bikes</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

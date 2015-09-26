@@ -1,3 +1,4 @@
+<div class="container mainpage-content">
 <h1>AUCTION: <%= @bike.brand %> <%= @bike.name %></h1>
 
 <% if not @auction.is_running? %>
@@ -54,3 +55,4 @@
             method: :delete,
             data: { confirm: 'Are you sure?' } %>
 <% end %>
+</div>
