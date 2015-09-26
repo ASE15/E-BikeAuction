@@ -1,6 +1,4 @@
-<div class="container mainpage-content">
-<p>
+<blockquote>
   <%= (mark ? mark : '') %>
-     <%= bid.amount %>.- (<%= bid.user.email %>, <%= bid.created_at %>)
-</p>
-</div>
+     <strong><%= bid.amount %>.-</strong>
+<footer><%= bid.user.email %>, <%= bid.created_at %></footer></blockquote>

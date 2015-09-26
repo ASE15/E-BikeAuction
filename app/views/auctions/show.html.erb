@@ -1,13 +1,17 @@
-<h1>AUCTION: <%= @bike.brand %> <%= @bike.name %></h1>
-
+<h1>Auction <small class="small-title"> <%= @bike.brand %> <%= @bike.name %></small></h1>
+<% if is_own_bike(@bike) %>
+    <%= button_to('Destroy', bike_path(@bike),
+                  method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right'  ) %><span style="float:right;">&nbsp;&nbsp;</span>
+    <%= button_to 'Edit', edit_bike_path(@bike), class: "btn btn-info pull-right" , :method => :get%><span style="float:right;">&nbsp;&nbsp;</span>
+<%end%>
 <% if not @auction.is_running? %>
-    <h2>Auction is finished!</h2>
+    <h3>Auction is finished!</h3>
     <% if @auction.bids.count > 0 %>
         Winner: <%= @auction.get_highest_bid.user.email %>
     <% end %>
 <% end %>
 
-<h2>Current price: <%= @auction.current_amount %></h2>
+<h3>Current price: <%= @auction.current_amount %>.-</h3>
 
 <p>
   <strong>Endtime:</strong>
@@ -18,39 +22,39 @@
   <strong>Seller:</strong>
   <%= @auction.bike.user.email %>
 </p>
-
+<div class="row">
+<div class="col-lg-6">
+<div class="page-header">
 <h2>Bike Infos</h2>
-<%= render @bike %>
-
+</div>
+<%= render @bike %></div>
+<div class="col-lg-6">
+<div class="page-header">
 <h2>Bidding</h2>
-
+</div>
+  <% if @sort_bids.count > 0 %>
+      <% @i = 0 %>
+      <% @sort_bids.each do |bid| %>
+          <% if bid.id? %> <%# fix for strange empty record in array %>
+              <%= render :partial => "bid/bid", :locals => {:bid => bid, :mark => (@i == 0  ? '!' : 'x')} %>
+              <% @i = @i + 1 %>
+          <% end %>
+      <% end %>
+  <% else %>
+      <div class="alert alert-info">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>No bids existing!
+      </div>
+  <% end %>
 <% if not user_signed_in? %>
-    You have to be signed in to bid
+    <div class="alert alert-info">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>You have to be signed in to bid!
+    </div>
 <% elsif @auction.is_running? %>
     <h3>Create new bid</h3>
     <%= render 'bid/form' %>
 <% end %>
 
-<h2>Bids</h2>
-<%  %>
-
-<% if @sort_bids.count > 0 %>
-    <% @i = 0 %>
-    <% @sort_bids.each do |bid| %>
-        <% if bid.id? %> <%# fix for strange empty record in array %>
-            <%= render :partial => "bid/bid", :locals => {:bid => bid, :mark => (@i == 0  ? '!' : 'x')} %>
-            <% @i = @i + 1 %>
-        <% end %>
-    <% end %>
-<% else %>
-    No bids existing
-<% end %>
-
+</div>
+</div>
 <br /><br />
 <%= link_to 'Back', auctions_path %>
-<% if is_own_auction(@auction) %>
-<%= link_to 'Edit', edit_auction_path(@auction) %> |
-<%= link_to 'Destroy', auction_path(@auction),
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %>
-<% end %>
