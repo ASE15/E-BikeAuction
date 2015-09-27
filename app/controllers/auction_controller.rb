@@ -18,7 +18,7 @@ class AuctionController < ApplicationController
       flash[:error] = 'Endtime must be in the future'
       render 'new'
     elsif @auction.save
-      redirect_to auction_path(@auction)
+      redirect_to auction_path(@auction), notice: "You have started the auction!"
     else
       render 'new'
     end

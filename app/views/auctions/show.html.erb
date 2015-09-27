@@ -1,18 +1,28 @@
 <h1>Auction <small class="small-title"> <%= @bike.brand %> <%= @bike.name %></small></h1>
 <% if is_own_bike(@bike) %>
-    <%= button_to('Destroy', bike_path(@bike),
+    <%= button_to('Destroy bike', bike_path(@bike),
                   method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right'  ) %><span style="float:right;">&nbsp;&nbsp;</span>
-    <%= button_to 'Edit', edit_bike_path(@bike), class: "btn btn-info pull-right" , :method => :get%><span style="float:right;">&nbsp;&nbsp;</span>
+    <%= button_to 'Edit bike', edit_bike_path(@bike), class: "btn btn-info pull-right" , :method => :get%><span style="float:right;">&nbsp;&nbsp;</span>
 <%end%>
+<% if @auction.bids.count == 0 %>
+    <%= link_to('Destroy auction', auction_path(@auction),
+                method: "delete", data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right') %><span style="float:right;">&nbsp;&nbsp;</span>
+    <%= link_to('Edit auction', edit_auction_path(@auction), class: "btn btn-info pull-right") %><span style="float:right;">&nbsp;&nbsp;</span>
+<% end %>
+<div style="clear:both;margin-bottom:10px;"></div>
 <% if not @auction.is_running? %>
-    <h3>Auction is finished!</h3>
     <% if @auction.bids.count > 0 %>
-        Winner: <%= @auction.get_highest_bid.user.email %>
+        <div class="alert alert-success"><h3>Auction is finished!</h3>
+            Winner: <%= @auction.get_highest_bid.user.email %>
+        </div>
+    <% else %>
+        <div class="alert alert-danger"><h3>Auction is finished! No winner.</h3>
+    </div>
     <% end %>
 <% end %>
 
 <h3>Current price: <%= @auction.current_amount %>.-</h3>
-
+<br />
 <p>
   <strong>Endtime:</strong>
   <%= @auction.endtime %>
@@ -42,12 +52,12 @@
       <% end %>
   <% else %>
       <div class="alert alert-info">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>No bids existing!
+        No bids existing!
       </div>
   <% end %>
 <% if not user_signed_in? %>
     <div class="alert alert-info">
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>You have to be signed in to bid!
+      You have to be signed in to bid!
     </div>
 <% elsif @auction.is_running? %>
     <h3>Create new bid</h3>
@@ -56,9 +66,9 @@
 
 </div>
 </div>
-
+<br />
 <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
 	<%= hidden_field_tag :message, "A really nice bike! See " + @domain %>
-	<%= f.submit "Tweet about this auction", class: "btn btn-positive"  %>
+	<%= f.submit "Tweet about this auction", class: "btn btn-info"  %>
 <% end %>
 <br /><br />

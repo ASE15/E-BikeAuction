@@ -25,7 +25,7 @@
         <td><%= a.bike.name %></td>
         <td><%= a.bike.brand %></td>
         <td><%= a.endtime %></td>
-        <td><%= button_to 'Show', auction_path(a), class: "btn-xs btn-info" , :method => :get%></td>
+        <td><%= link_to 'Show', auction_path(a), class: "btn btn-xs btn-info" %></td>
       </tr>
   <% end %>
 </table>

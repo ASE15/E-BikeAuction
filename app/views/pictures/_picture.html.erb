@@ -1,9 +1,9 @@
 <p>
-  <img src="/uploads/<%= picture.picture_identifier %>" style="height:200px;" />
+  <img src="/uploads/<%= picture.picture_identifier %>" style="height:200px;" class="img-thumbnail" />
 
   <% if is_own_bike(picture.bike) %>
       <%= link_to 'Destroy Picture', bike_picture_path(picture.bike, picture),
               method: :delete,
-              data: { confirm: 'Are you sure?' } %>
+              data: { confirm: 'Are you sure?' }, class: "btn btn-xs btn-danger" %>
   <% end %>
 </p>

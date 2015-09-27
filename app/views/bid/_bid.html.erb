@@ -1,4 +1,8 @@
 <blockquote>
-  <%= (mark ? mark : '') %>
+  <% if mark == '!' %>
+      <span class="glyphicon glyphicon-ok" style="color:green;"></span>
+  <% elsif mark == 'x' %>
+      <span class="glyphicon glyphicon-remove" style="color:red;"></span>
+  <% end %>
      <strong><%= bid.amount %>.-</strong>
 <footer><%= bid.user.email %>, <%= bid.created_at %></footer></blockquote>

@@ -1,16 +1,31 @@
-<%= form_for([@bike, @bike.build_auction], :url => bike_auction_index_path(@bike)) do |f| %>
+<%= form_for([@bike, @auction], :url => bike_auction_index_path(@bike)) do |f| %>
 
-    <p>
+    <% if @auction.errors.any? %>
+        <div class="alert alert-danger">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <h3><%= pluralize(@auction.errors.count, "error") %> prohibited this bike from being saved:</h3>
+          <ul>
+            <% @auction.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="row col-md-5">
+    <div class="form-group">
       <%= f.label 'Start price' %><br>
-      <%= f.text_field :current_amount %>
-    </p>
+      <%= f.text_field :current_amount ,class:"form-control" %>
+    </div>
 
-    <p>
+    <div class="form-group">
       <%= f.label :endtime %><br>
-      <%= f.datetime_select :endtime, :ampm => false %>
-    </p>
+      <%= f.datetime_select(:endtime, :ampm => false) %>
+    </div>
 
-    <div class="actions">
+    <div class="form-group">
       <%= f.submit 'Create Auction', class: "btn btn-success" %>
     </div>
+    </div>
+    <div style="clear:both;"></div>
 <% end %>
