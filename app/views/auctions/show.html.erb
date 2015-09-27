@@ -58,7 +58,7 @@
 </div>
 
 <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
-	<%= hidden_field_tag :message, "A really nice bike! See " + @domain + auctions_path + "/" + @auction.id.to_s %>
+	<%= hidden_field_tag :message, "A really nice bike! See " + @domain %>
 	<%= f.submit "Tweet about this auction", class: "btn btn-positive"  %>
 <% end %>
 <br /><br />
