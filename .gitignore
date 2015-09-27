@@ -131,3 +131,6 @@ build/
 
 # Ignore gedit stuff
 *~
+
+# Ignore application configuration
+/config/application.yml
