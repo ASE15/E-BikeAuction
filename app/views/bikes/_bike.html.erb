@@ -38,15 +38,11 @@
   <%= @bike.chargingtime %>
 </p>
 
-
-
-<h2>Pictures</h2>
-
 <%= render @bike.pictures %>
 
 <% if is_own_bike(@bike) %>
 
-    <h2>Add pictures:</h2>
+    <h2>Add Picture</h2>
     <%= render 'pictures/form' %>
 
 <% end %>

@@ -1,13 +1,2 @@
-<h1>Hello World!</h1>
+<h1>Welcome<small class="small-title">E-Bike Auction Platform </small></h1>
 
-<ul class="hmenu">
-  <%= render 'devise/menu/registration_items' %>
-  <%= render 'devise/menu/login_items' %>
-</ul>
-
- <p>Click The link below to tweet this auction.</p>
- 
-  <%= form_for :tweet, url: tweets_path, method: :post do |f| %>
-    <%= hidden_field_tag :message, "A hidden message to be tweeted!" %>
-    <%= f.submit "Send Tweet" %>
-  <% end %>

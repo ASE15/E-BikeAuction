@@ -23,6 +23,7 @@ class AuctionsController < ApplicationController
   def show
     @auction = Auction.find(params[:id])
     @bike = @auction.bike
+    @domain = request.domain
 
     @sort_bids = @auction.bids.sort_by{ |b| b.amount }.reverse
   end
