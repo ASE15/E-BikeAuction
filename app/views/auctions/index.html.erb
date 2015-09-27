@@ -1,3 +1,9 @@
+<style>
+    .table > tbody > tr > td {
+        vertical-align: middle;
+    }
+</style>
+
 <h1>Buy<small class="small-title">Looking for a new e-Bike?</small></h1>
 
 <%= form_tag(auctions_path, :method => "get", id: "search-form") do %>
@@ -9,7 +15,7 @@
 <br>
 <table class="table table-striped table-hover table-condensed table-responsive">
   <tr>
-    <th></th>
+    <th style="width:160px;">Picture</th>
     <th>Name</th>
     <th>Brand</th>
     <th>Enddate</th>
@@ -18,7 +24,7 @@
 
   <% @auctions.each do |a| %>
       <tr>
-        <td><% if a.bike.pictures.count > 0 %>
+        <td style="text-align:center;"><% if a.bike.pictures.count > 0 %>
               <%= render :partial => "pictures/picture_index", :locals => {:picture => a.bike.pictures[0]} %>
             <% end %>
         </td>
