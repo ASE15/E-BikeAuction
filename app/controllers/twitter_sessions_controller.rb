@@ -6,7 +6,13 @@ class TwitterSessionsController < ApplicationController
     if(session[:tweet] != nil)
       tweet = session[:tweet]
       session[:tweet] = nil
-      current_twitter_user.tweet(tweet)
+      
+      begin
+		current_twitter_user.tweet(tweet)
+	  rescue Twitter::Error::Forbidden => e
+		 session[:tweet_error] = true
+	  end
+	  
       self.destroy()
     else 
 	  redirect_to root_path
@@ -15,6 +21,18 @@ class TwitterSessionsController < ApplicationController
  
   def destroy
     session[:twitter_user_id] = nil
-    redirect_to root_path
+    
+    if(session[:tweet_back])
+      redirection = session[:tweet_back]
+      session[:tweet_back] = nil
+      if(session[:tweet_error])
+        session[:tweet_error] = nil
+        redirect_to redirection, alert: "You already tweeted about this auction!"
+      else
+		redirect_to redirection, notice: "You successfully tweeted about this auction!"
+	  end
+    else
+	  redirect_to root_path
+	end
   end
 end
